@@ -6,12 +6,13 @@ import {
   Navigator,
   TouchableOpacity,
 } from 'react-native';
+import Clicker from '../partials/Clicker';
 
-export default class Clicker extends Component {
+export default class Game extends Component {
   renderScene (route, navigator) {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
-        <Text style={{backgroundColor: 'yellow', color: 'green'}}>Clicker!</Text>
+        <Clicker />
       </View>
     );
   }
@@ -32,7 +33,7 @@ export default class Clicker extends Component {
       Title (route, navigator, index, navState) {
         return (
           <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
-            <Text style={{color: 'white', margin: 10, fontSize: 16}}>CLICKER</Text>
+            <Text style={{color: 'white', margin: 10, fontSize: 16}}>GAME</Text>
           </TouchableOpacity>
         );
       }

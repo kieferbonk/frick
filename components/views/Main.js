@@ -25,8 +25,8 @@ export default class Main extends Component {
       RightButton (route, navigator, index, navState) {
         return (
           <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
-              onPress={() => navigator.parentNavigator.push({id: 'SceneClicker'})}>
-            <Text style={{color: 'white', margin: 10,}}>Clicker</Text>
+              onPress={() => navigator.parentNavigator.push({id: 'SceneGame'})}>
+            <Text style={{color: 'white', margin: 10,}}>Game</Text>
           </TouchableOpacity>
         );
       },

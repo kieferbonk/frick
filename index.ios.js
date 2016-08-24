@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import SceneMain from './components/views/Main';
-import SceneClicker from './components/views/Clicker';
+import SceneGame from './components/views/Game';
 
 class frick extends Component {
   renderScene (route, navigator) {
@@ -18,9 +18,9 @@ class frick extends Component {
           navigator={navigator} />
       );
     }
-    if (routeId === 'SceneClicker') {
+    if (routeId === 'SceneGame') {
       return (
-        <SceneClicker
+        <SceneGame
           navigator={navigator} />
       );
     }
