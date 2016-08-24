@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import SceneMain from './components/views/Main';
 import SceneGame from './components/views/Game';
+import SceneUsers from './components/views/Users';
 
 class frick extends Component {
   renderScene (route, navigator) {
@@ -22,6 +23,16 @@ class frick extends Component {
       return (
         <SceneGame
           navigator={navigator} />
+      );
+    }
+    if (routeId === 'SceneUsers') {
+      return (
+        <SceneUsers
+          navigator={navigator}
+          users = {[
+            'foo',
+            'bar',
+          ]} />
       );
     }
     if (routeId === 'NoNavigatorPage') {

@@ -3,42 +3,51 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator,
-  TouchableHighlight,
+  ListView,
   TouchableOpacity,
+  Navigator,
 } from 'react-native';
+import User from '../partials/User';
 
-export default class Main extends Component {
+export default class Users extends Component {
+  constructor (props) {
+    super(props);
+
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      users: ds.cloneWithRows(this.props.users),
+    };
+
+    console.log(this.state.users);
+  }
+
   renderScene (route, navigator) {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
-        <Text style={{backgroundColor: 'yellow', color: 'green'}}>FRICK!</Text>
-      </View>
+      <ListView
+        dataSource={this.state.users}
+        renderRow={(row) => <User name={row} />}
+        style={{padding: 20}}
+      />
     );
   }
 
-  render() {
+  render () {
     const NavigationBarRouteMapper = {
-      LeftButton(route, navigator, index, navState) {
+      LeftButton (route, navigator, index, navState) {
         return (
           <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
-              onPress={() => navigator.parentNavigator.push({id: 'SceneUsers'})}>
-            <Text style={{color: 'white', margin: 10,}}>Users</Text>
+              onPress={() => navigator.parentNavigator.pop()}>
+            <Text style={{color: 'white', margin: 10,}}>{`< Back`}</Text>
           </TouchableOpacity>
         );
       },
       RightButton (route, navigator, index, navState) {
-        return (
-          <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
-              onPress={() => navigator.parentNavigator.push({id: 'SceneGame'})}>
-            <Text style={{color: 'white', margin: 10,}}>Game</Text>
-          </TouchableOpacity>
-        );
+        return null;
       },
       Title (route, navigator, index, navState) {
         return (
           <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
-            <Text style={{color: 'white', margin: 10, fontSize: 16}}>FRICK!</Text>
+            <Text style={{color: 'white', margin: 10, fontSize: 16}}>USERS</Text>
           </TouchableOpacity>
         );
       }
@@ -52,6 +61,6 @@ export default class Main extends Component {
             <Navigator.NavigationBar style={{backgroundColor: '#246dd5'}}
                 routeMapper={NavigationBarRouteMapper} />
           } />
-    );
+    )
   }
 }
